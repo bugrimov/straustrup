@@ -56,7 +56,7 @@ bool Name::operator==(Name& b) const
   int i;
   for (i=0; s[i] != '\0' && b.s[i] != '\0'; i++)
   {
-    std::cout << b.s[i] << "==" << s[i] << " ";
+    //std::cout << b.s[i] << "==" << s[i] << " ";
     if (b.s[i] != s[i])
       return false;
   }

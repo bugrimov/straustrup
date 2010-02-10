@@ -18,17 +18,27 @@ public:
 
   ~Table() {delete [] p;}
   bool add(Name, double);
-  double Table::operator[](const char*);
+  double& Table::operator[](const char*);
+  double& Table::operator[](std::string);
 };
 
+double& Table::operator[](std::string str) 
+{ 
+  return (*this)[str.c_str()];
+}
 
-double Table::operator[](const char* key) 
+double& Table::operator[](const char* key) 
 { 
   Name* k = new Name(key);
   for (int i=0; i<curr; i++)
     if( p[i] == *k)
       return values[i];
-  return 0;
+
+  values[curr] = 0;
+  Name* n = new Name(key);
+  p[curr] = *n;
+  curr++;
+  return values[curr-1];
 }
 
 

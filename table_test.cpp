@@ -10,4 +10,6 @@ int main()
   a.add(Name("xcv"), 673.3466);
   a["abc"] = 99.5566;
   std::cout << a["abc"] << std::endl;
+  std::cout << a["qwe"] << std::endl;
+  std::cout << a["xcv"] << std::endl;
 }
