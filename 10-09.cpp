@@ -24,9 +24,14 @@ class Intset
   //void add_before(Data* what, Data* before);
 public:
   Intset() { curr=top = 0;}
-  Intset& Intset::add(int num);
-  Intset& operator+(Instet&);
+  Intset& add(int num);
+  Intset& operator+(Intset&);
+
+  bool has(int);
+
   int pop();
+  void newPop();
+  bool canPop();
 
   void print();
 };
@@ -96,7 +101,7 @@ int Intset::pop()
 {
   if (curr)
   {
-    int i = curr.getData();
+    int i = curr->getData();
     curr = curr->getNext();
     return i;
   }
@@ -118,9 +123,16 @@ bool Intset::has(int i)
   return false;
 }
 
-Intset& operator+(Intset& b)
+Intset& Intset::operator+(Intset& b)
 {
-  
+  // need copy constructor here
+  // create new set from this,
+  // then add elements from b
+
+  newPop();
+  while (canPop())
+    if (! b.has(pop()))
+
   
 }
 
@@ -136,7 +148,9 @@ int main()
   a.print();
   b.print();
 
-  Intset c = a+b;
-  c.print();
+  std::cout << a.has(1) << a.has(10);
+
+  //Intset c = a+b;
+  //c.print();
 }
 
