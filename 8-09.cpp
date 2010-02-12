@@ -59,53 +59,6 @@ struct PervichnoeViragenie
 
 } // Calc
 
-struct Calc::Overhead
-{
-};
-
-struct Calc::DivisionZero
-{
-};
-
-void Calc::assert1(double a, double b, double c)
-{
-	if (c == a || c == b || c == std::numeric_limits<double>::infinity() || c == -std::numeric_limits<double>::infinity() )
-		throw Overhead();
-}
-
-double Calc::plus(double a, double b)
-{
-	std::cout << a << "+" << b << '=' << a+b;
-	double c = a+b;
-	assert1(a, b, c);
-	return (a+b);
-}
-
-double Calc::minus(double a, double b)
-{
-	std::cout << a << "-" << b << '=' << a-b;
-	double c = a-b;
-	assert1(a, b, c);
-	return (a-b);
-}
-
-double Calc::multiply(double a, double b)
-{
-	//std::cout << a << "-" << b << '=' << a-b;
-	double c = a*b;
-	assert1(a, b, c);
-	return c;
-}
-
-double Calc::divide(double a, double b)
-{
-	if (b == 0) throw DivisionZero();
-	//std::cout << a << "-" << b << '=' << a-b;
-	double c = a/b;
-	assert1(a, b, c);
-	return c;
-}
-
 int Calc::d(const string& s)
 {
 	cout << "DEBUG: " << s << '\n';

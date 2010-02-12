@@ -2,201 +2,140 @@
 #include <string>
 #include <map>
 #include <cctype>
-#include <sstream>
-#include <vector>
 
 using namespace std;
 
-enum Token_value
-{
-	NAME, OTHER, END, SPACE, 
-	ARGS_DELIM = ',',
-	DIRECTIVE_START='#', END_LINE='\n',
-	PLUS='+', MINUS='-', MUL='*', DIV='/',
-	PRINT=';', ASSIGN='=', LP='(', RP=')', LF='{', RF='}'
-};
-
-string string_value;
+double number_value;
+string string_valuel
 int no_of_errors;
 Token_value curr_tok = PRINT;
-map<string,string> table;
-map<string,vector<string> > args;
-istream* input = &cin;
+istream* input;
 
-string prim(bool);
 
-int d(const string& s)
+enum Token_value
 {
-	cout << "DEBUG: " << s << '\n';
-	return 1;
+  NAME, NUMBER, END,
+  PLUS='+', MINUS='-', MUL='*', DIV='/',
+  PRINT=';', ASSIGN='=', LP='(', RP=')'
 }
 
-int error(const string& s, int line=0)
+
+double expr(bool get)
 {
-	no_of_errors++;
-	cerr << "ERROR: " << s;
-	if (line != 0 )
-		cout << " (line: " << line << ")";
-	cout << "\n";
-	return 1;
+  double left=term(get);
+
+  for (;;)
+    switch(curr_tok)
+    {
+    case PLUS:
+      left += term(true);
+      break;
+    case MINUS:
+      left -= term(true);
+      break;
+    default:
+      return left;
+    }
 }
+
+
+double term(bool get)
+{
+  double left=prim(get);
+
+  for (;;)
+    switch (curr_tok)
+    {
+    case MUL:
+      left *= prim(true);
+      break;
+    case DIV:
+      if (double d=prim(true))
+      {
+        left /= d;
+        break;
+      }
+      return error("delenie na 0");
+    default:
+      return left;
+    }
+}
+
+
+double prim(bool get)
+{
+  if (get) get_token();
+
+  switch (curr_tok)
+  {
+  case NUMBER:
+  {
+    double v=number_value;
+    get_token();
+    return v;
+  }
+  case NAME:
+  {
+    double& v = table[string_value];
+    if (get_token() == ASSIGN) v=expr(true);
+    return v;
+  }
+  case MINUS:
+    return -prim(true);
+  case LP:
+  {
+    double e=expr(true);
+    if (curr_tok != RP) return error("ogidalas )");
+    get_token();
+    return e;
+  }
+  default:
+    return error("ogidalos pervichnoe viragenie");
+  }
+}
+
+
+map<string,double> table;
 
 
 Token_value get_token()
 {
-	char ch;
-	
-	if (!input->get(ch)) return curr_tok=END;
-	string_value=ch;
-	switch(ch)
-	{
-		case EOF:
-			return curr_tok=END;
-		case '\n':
-			return curr_tok = END_LINE;
-		case ' ':
-		case '\t':
-			string_value = ch;
-			return curr_tok = SPACE;
-		case LP:
-			return curr_tok = LP;
-		case RP:
-			return curr_tok = RP;
-		case ',':
-			return curr_tok = ARGS_DELIM;
-		case '#':
-				string_value="";
-				while (input->get(ch) && isalnum(ch)) string_value.push_back(ch);
-				input->putback(ch);
-				return curr_tok = DIRECTIVE_START;
-		default:
-			if (isalpha(ch))
-			{
-				
-				while (input->get(ch) && (isalnum(ch) || ch =='_')) string_value.push_back(ch);
-				input->putback(ch);
-				return curr_tok = NAME;
-			}
-			return curr_tok = OTHER;
-	}
+  char ch;
+
+  do
+  {
+    if (!cin.get(ch)) return curr_tok=END;
+  } while (ch != '\n' && isspace(ch));
+
+  switch(ch)
+  {
+    case ';':
+    case '\n':
+      return curr_tok=PRINT;
+    default:
+      if (isalpha(ch))
+      {
+        string_value=ch;
+        while (cin.get(ch) && isalnum(ch)) string_value.push_back(ch);
+        cin.putback(ch);
+        return curr_tok = NAME;
+      }
+      error("неправильная лексема");
+      return curr_tok = PRINT;
+  }
 }
 
-void show_vector(vector<string>* v)
+
+int error(const string& s)
 {
-	for (int i=0; i< v->size(); i++)
-		cout << (*v)[i] << " ";
-	cout << '\n';
+  no_of_errors++;
+  cerr << "ERROR: " << s << '\n';
+  return 1;
 }
-
-
-string prim(bool get)
-{
-  if (get) get_token();
-
-	switch (curr_tok)
-	{
-		case END_LINE:
-			return "\n";
-		case NAME:
-			if (table.count(string_value))
-			{
-				string name = string_value;
-				if (get_token() == LP)
-				{
-					map<string, string> values;
-					vector<string>* theArgs = &args[name];
-					vector<string>::iterator it;
-					it = (*theArgs).begin();
-					string value = "";
-					while (get_token() != RP)
-						if (curr_tok == ARGS_DELIM)
-						{
-							values[*(it++)] = value;
-							value = "";
-							//it++;
-						}
-						else if (curr_tok != SPACE){
-							value += string_value;
-						}
-					//show_vector(theArgs);
-					values[*(it)] = value;
-					
-					string body = "";
-					
-					//d("BODY: " + table[name]);
-					input = new istringstream(table[name]);
-					while (*input)
-					{
-						get_token();
-						//d(string_value);
-						if (curr_tok == NAME && values.count(string_value))
-						{
-							//d("!!!" + values[string_value]);
-							body += values[string_value];
-						}
-						else
-							body += string_value;
-					}
-					input = &cin;
-					 
-					return body;
-				}
-				else
-				{
-					input->putback(curr_tok);
-					return table[string_value];
-				}
-			}
-			else
-				return string_value;
-		case DIRECTIVE_START:
-			if (string_value == "define")
-			{
-				while (get_token() != NAME && curr_tok != END_LINE);
-				string name = string_value;
-				string& macro_body = table[name];
-				macro_body = "";
-				while (get_token() == SPACE);
-				if (curr_tok == LP)
-				{
-					vector<string>* theArgs;
-					theArgs = &args[name];
-					int i = 0;
-					while (get_token() != RP)
-						if (curr_tok == NAME)
-							(*theArgs).push_back(string_value);
-						if (curr_tok == ARGS_DELIM)
-							i++;
-					while (get_token() == SPACE);
-				}
-				do macro_body += string_value;
-				while (get_token() !=	END_LINE);
-				//d("Macro defined: " + name + ": " +macro_body);
-				return "";
-			}
-			else
-				return "#"+string_value;
-		//case SPACE:
-		default:
-			return string_value;
-	}
-}
-
 
 int main(int argc, char* argv[])
-{	
-	while (*input)
-	{
-		get_token();
-		if (curr_tok == END) break;
-		cout << prim(false);
-	}
-	
-	return no_of_errors;
-}
-
-
-			
-			
+{
+  switch (argc)
+  }
 
 

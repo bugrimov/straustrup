@@ -106,7 +106,6 @@ Token_value get_token()
 			{
 				string_value=ch;
 				while (cin.get(ch) && isalnum(ch)) string_value.push_back(ch);
-				std::cout << "found name:" << string_value << '\n';
 				cin.putback(ch);
 				return curr_tok = NAME;
 			}
@@ -136,7 +135,7 @@ double prim(bool get)
     return v;
   }
   case MINUS:
-    return -prim(t rue);
+    return -prim(true);
   case LP:
   {
     double e=expr(true);
