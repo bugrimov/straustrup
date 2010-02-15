@@ -12,7 +12,13 @@ class Data
 public:
   Data(int n) {num = n; next = 0;}
   Data* getNext() { return next; }
-  void setNext(Data* d) { next = d; }
+  void setNext(Data* d)
+  { 
+    if (d != this)
+      next = d; 
+    else
+      std::cout <<"ERROR!!!!";
+  }
   int getData() { return num; }
   void print() { std::cout << num << std::endl; }
 };
@@ -24,17 +30,28 @@ class Intset
   //void add_before(Data* what, Data* before);
 public:
   Intset() { curr=top = 0;}
+  Intset(const Intset&);
   Intset& add(int num);
-  Intset& operator+(Intset&);
+  const Intset operator+(const Intset&) const;
 
-  bool has(int);
+  bool has(int) const;
 
-  int pop();
-  void newPop();
-  bool canPop();
+  //int pop();
+  //void newPop();
+  //bool canPop();
 
-  void print();
+  void print() const;
 };
+
+Intset::Intset(const Intset& b)
+{
+  Data* el = b.top;
+  while (el)
+  {
+    add(el->getData());
+    el = el->getNext();
+  }
+}
 
 
 Intset& Intset::add(int num)
@@ -74,10 +91,12 @@ Intset& Intset::add(int num)
   {
     curr = top = new Data(num);
   }
+  print();
+
   return *this;
 }
 
-void Intset::print()
+void Intset::print() const
 {
   std::cout << "\nPrinting " << this << ":\n";
 
@@ -89,6 +108,7 @@ void Intset::print()
   }
 }
 
+/*
 bool Intset::canPop()
 {
   if (curr)
@@ -103,37 +123,52 @@ int Intset::pop()
   {
     int i = curr->getData();
     curr = curr->getNext();
+    //std::cout << "[" << curr << "]";
     return i;
   }
   else
+  {
+    curr = 0;
     return 0;
+  }
 }
 
 void Intset::newPop()
 {
   curr = top;
 }
-
-bool Intset::has(int i)
+*/
+bool Intset::has(int i) const
 {
-  newPop();
-  while (canPop())
-    if (pop() == i)
+  Data* el = top;
+  while (el)
+  {
+    if (el->getData() == i)
       return true;
+    el = el->getNext();
+  }
+
   return false;
 }
 
-Intset& Intset::operator+(Intset& b)
+const Intset Intset::operator+(const Intset& b) const
 {
-  // need copy constructor here
-  // create new set from this,
-  // then add elements from b
+  Intset c = *this;
 
-  newPop();
-  while (canPop())
-    if (! b.has(pop()))
+  Data* el = top;
+  while (el)
+  {
+    std::cout << "+" << el->getData();
+    if (! c.has(el->getData()))
+      c.add(el->getData());
+    el = el->getNext();
 
-  
+  }
+  std::cout << " END\n";
+
+  c.print();
+
+  return c;
 }
 
 
@@ -148,9 +183,13 @@ int main()
   a.print();
   b.print();
 
-  std::cout << a.has(1) << a.has(10);
+  //std::cout << a.has(1) << a.has(10);
 
-  //Intset c = a+b;
-  //c.print();
+
+  std::cout << "START\n";
+  Intset c = a+b;
+  std::cout << " END\n";
+
+  c.print();
 }
 
