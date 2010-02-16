@@ -9,15 +9,18 @@ class Data
 {
   int num;
   Data* next;
+  bool has_next;
 public:
-  Data(int n) {num = n; next = 0;}
+  Data(int n) {num = n; next = 0; has_next=false;}
   Data* getNext() { return next; }
+  bool hasNext() { return has_next; }
   void setNext(Data* d)
   { 
     if (d != this)
       next = d; 
     else
       std::cout <<"ERROR!!!!";
+    has_next = true;
   }
   int getData() { return num; }
   void print() { std::cout << num << std::endl; }
@@ -26,10 +29,10 @@ public:
 class Intset
 {
   Data* top;
-  Data* curr;
+  //Data* curr;
   //void add_before(Data* what, Data* before);
 public:
-  Intset() { curr=top = 0;}
+  Intset() { top = 0;}
   Intset(const Intset&);
   Intset& add(int num);
   const Intset operator+(const Intset&) const;
@@ -44,54 +47,63 @@ public:
 };
 
 Intset::Intset(const Intset& b)
+:top(0)
 {
   Data* el = b.top;
   while (el)
   {
+    //std::cout << el->getData();
     add(el->getData());
-    el = el->getNext();
+    if (el != el->getNext())
+      el = el->getNext();
+    else
+      std::cout << "?????";
   }
+  //std::cout << "copy end\n";
 }
 
 
 Intset& Intset::add(int num)
 {
+  if (has(num) )
+    return *this;
+
+  Data* what=new Data(num);
   if (top)
   {
-    Data* what=new Data(num);
     Data* el = top;
     Data* prev = 0;
-    while (el && el->getData() < num)
+    while (el)
     {
+      if (num < el->getData())
+        if (prev == 0)
+        {
+          what->setNext(el);
+          top = what;
+          return *this;
+        }
+        else
+        {
+          prev->setNext(what);
+          what->setNext(el);
+          return *this;
+        }
+
       prev = el;
       el = el->getNext();
     }
 
-    if(el && el->getData() == num)
-      return *this;
 
-    if (prev == 0)
-    {
-      what->setNext(top);
-      curr = top = what;
-    }
-    else if (!el && prev)
-    {
+    if ( prev )
       prev->setNext(what);
-    }
-    else if (el)
-    {
-      prev->setNext(what);
-      what->setNext(el);
-    }
     else
       std::cout << "Something was wrong.\n";
   }
   else
   {
-    curr = top = new Data(num);
+    top = what;
   }
-  print();
+  //print();
 
   return *this;
 }
@@ -108,57 +120,30 @@ void Intset::print() const
   }
 }
 
-/*
-bool Intset::canPop()
-{
-  if (curr)
-    return true;
-  else
-    return false;
-}
-
-int Intset::pop()
-{
-  if (curr)
-  {
-    int i = curr->getData();
-    curr = curr->getNext();
-    //std::cout << "[" << curr << "]";
-    return i;
-  }
-  else
-  {
-    curr = 0;
-    return 0;
-  }
-}
-
-void Intset::newPop()
-{
-  curr = top;
-}
-*/
 bool Intset::has(int i) const
 {
   Data* el = top;
   while (el)
   {
+    //std::cout << " [" << el << " " << el->getData() << " " << el->getNext() << "]";
     if (el->getData() == i)
+    {
+      //std::cout << "[has]";
       return true;
+    }
     el = el->getNext();
   }
-
+  //std::cout << "[not has]";
   return false;
 }
 
 const Intset Intset::operator+(const Intset& b) const
 {
   Intset c = *this;
-
-  Data* el = top;
+  Data* el = b.top;
   while (el)
   {
-    std::cout << "+" << el->getData();
+    //std::cout << "+" << el->getData();
     if (! c.has(el->getData()))
       c.add(el->getData());
     el = el->getNext();
@@ -175,7 +160,7 @@ const Intset Intset::operator+(const Intset& b) const
 int main()
 {
   Intset a;
-  a.add(4).add(9).add(15).add(10);
+  a.add(4).add(2).add(15).add(10);
 
   Intset b;
   b.add(3).add(9).add(15).add(4).add(3);
