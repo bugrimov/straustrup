@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 
-namespace Crono
+namespace Chrono
 {
 	
 	class Date
@@ -20,14 +20,23 @@ namespace Crono
 			
 			std::string string_rep() const;
 			void char_rep(char s[]) const;
-			
-			static void set_default(int, Month, int);
+			static Date* default_date;
+			static int t;
+		
+		 void static set_default(int dd, Month mm, int yy)
+			{
+				//Date::
+				//Chrono::Date::t=0;
+				default_date = new Date(dd, mm, yy);
+			}
 			
 			Date& add_year(int n);
 			Date& add_month(int n);
 			Date& add_day(int n);
 			
 			//	inline bool operator== (Date a, Date b);
+
+
 			
 		private:
 			int d, m, y;
@@ -35,8 +44,6 @@ namespace Crono
 			mutable bool cache_valid;
 			mutable std::string cache;
 			void compute_cache_value();
-			
-			static Date default_date;
 	};
 	
 	bool leapyear(int year)
@@ -47,17 +54,20 @@ namespace Crono
 			return false;
 	}
 
-	static void Date::set_default(int d, Month m, int y)
+	/*
+	static void Date::set_default(int dd, Month mm, int yy)
 	{
-		Date::default_date = Date(d, m, y);
+		default_date = new Date(dd, mm, yy);
 	}
+	 */
 	
 	Date::Date(int dd, Month mm, int yy)
 	{
-		if (yy == 0) yy = default_date.year();
-		if (mm == 0) mm = default_date.month();
-		if (dd == 0) dd = default_date.day();
-		
+		/*
+		if (yy == 0) yy = Date::default_date->year();
+		if (mm == 0) mm = Date::default_date->month();
+		if (dd == 0) dd = Date::default_date->day();
+		*/
 		int max;
 		switch (mm)
 		{
@@ -128,10 +138,22 @@ namespace Crono
 		std::sprintf(s, "%d/%d/%d", d, m, y);
 		return (std::string)s;
 	}
+	Date* Date::default_date = new Date(1, Chrono::Date::Month(1), 1970);
 	
-} // namespace chrono
+	
+}; // namespace chrono
+//int Chrono::Date::t = 5;
+//void Chrono::Date::set_default(1, Chrono::Date::Month(1), 1970);
+//Chrono::
 
+using Chrono::Date;
 int main()
 {
-	Chrono::Date::set_default(1, Chrono::Date::Month(1), 1970);
+
+	Date::set_default(1, Date::Month(1), 1970);
+
+	1;
+	//Chrono::Date::default_date = new Chrono::Date::Date(1, Chrono::Date::Month(1), 1970);
+	//Chrono::Date::t = 5;
+	
 }
