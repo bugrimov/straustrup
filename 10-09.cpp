@@ -24,6 +24,7 @@ public:
   }
   int getData() { return num; }
   void print() { std::cout << num << std::endl; }
+
 };
 
 class Intset
@@ -44,6 +45,10 @@ public:
   //bool canPop();
 
   void print() const;
+
+  friend Intset intersection(Intset a, Intset b);
+  friend Intset simmetrical_difference(Intset a, Intset b);
+
 };
 
 Intset::Intset(const Intset& b)
@@ -156,6 +161,46 @@ const Intset Intset::operator+(const Intset& b) const
   return c;
 }
 
+Intset simmetrical_difference(Intset a, Intset b)
+{
+  Intset d;
+  Data* el = a.top;
+  while (el)
+  {
+    if (! b.has(el->getData()) )
+      d.add(el->getData());
+    el = el->getNext();
+  }
+  el = b.top;
+  while (el)
+  {
+    if (! a.has(el->getData()) )
+      d.add(el->getData());
+    el = el->getNext();
+  }
+  return d;
+}
+
+Intset intersection(Intset a, Intset b)
+{
+  Intset d;
+  Data* el = a.top;
+  while (el)
+  {
+    if (b.has(el->getData()) )
+      d.add(el->getData());
+    el = el->getNext();
+  }
+  el = b.top;
+  while (el)
+  {
+    if (a.has(el->getData()) )
+      d.add(el->getData());
+    el = el->getNext();
+  }
+  return d;
+}
+
 
 int main()
 {
@@ -171,10 +216,14 @@ int main()
   //std::cout << a.has(1) << a.has(10);
 
 
-  std::cout << "START\n";
+  std::cout << "Adding:\n";
   Intset c = a+b;
-  std::cout << " END\n";
-
   c.print();
+  std::cout << "Intersection:\n";
+  Intset d = intersection(a, b);
+  d.print();
+  std::cout << "Simmetrical difference:\n";
+  Intset e = simmetrical_difference(a, b);
+  e.print();
 }
 
