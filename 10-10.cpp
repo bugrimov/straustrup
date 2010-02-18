@@ -9,12 +9,37 @@ struct Node
   int m;
   int n;
 
+  Node(int mm, int nn)
+  {
+    m=mm;
+    n=nn;
+  }
+  Node()
+  {
+    m=0;
+    n=0;
+  }
+  
   void print()
   {
     std::cout << m << ":" << n << std::endl;
   }
 
+  bool operator<(const Node&) const;
+  bool operator==(const Node&) const;
+
 };
+
+bool Node::operator<(const Node& node) const
+{
+  return (m<node.m && (m==node.m && n<node.n));
+}
+
+
+bool Node::operator==(const Node& node) const
+{
+  return (m==node.m && n==node.n);
+}
 
 
 class Data
@@ -45,7 +70,7 @@ public:
   Intset& add(Node);
   const Intset operator+(const Intset&) const;
 
-  bool has(int) const;
+  bool has(Node) const;
 
   void print() const;
 
@@ -73,17 +98,17 @@ Intset::Intset(const Intset& b)
 
 Intset& Intset::add(Node node)
 {
-  if (has(num) )
+  if (has(node) )
     return *this;
 
-  Data* what=new Data(num);
+  Data* what=new Data(node);
   if (top)
   {
     Data* el = top;
     Data* prev = 0;
     while (el)
     {
-      if (num < el->getData())
+      if (node < el->getData())
         if (prev == 0)
         {
           what->setNext(el);
@@ -128,7 +153,7 @@ void Intset::print() const
   }
 }
 
-bool Intset::has(int i) const
+bool Intset::has(Node i) const
 {
   Data* el = top;
   while (el)
@@ -204,10 +229,10 @@ Intset intersection(Intset a, Intset b)
 int main()
 {
   Intset a;
-  a.add(Node(4,1)).add(2).add(15).add(10);
+  a.add(Node(4,1)).add(Node(2,4)).add(Node(15,5)).add(Node(10,3));
 
   Intset b;
-  b.add(3).add(9).add(15).add(4).add(3);
+  b.add(Node(3,2)).add(Node(9,5)).add(Node(15,5)).add(Node(4,3)).add(Node(5,5));
 
   a.print();
   b.print();
