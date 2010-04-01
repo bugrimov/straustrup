@@ -1,0 +1,4 @@
+/Users/olegbugrimov/straustrup/8-11.cpp:247: error: expected ',' or '...' before ']' token
+/Users/olegbugrimov/straustrup/8-11.cpp: In function 'int main()':
+/Users/olegbugrimov/straustrup/8-11.cpp:291: error: 'argc' was not declared in this scope
+/Users/olegbugrimov/straustrup/8-11.cpp:297: error: 'argv' was not declared in this scope

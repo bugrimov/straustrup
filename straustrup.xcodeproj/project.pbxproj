@@ -1,0 +1,267 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		769388231135C30200E54FFB /* 10-11.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 769388221135C30200E54FFB /* 10-11.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8DD76F690486A84900D96B5E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		769388221135C30200E54FFB /* 10-11.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "10-11.cpp"; sourceTree = "<group>"; };
+		76C7AE3A10E01AAF00D65BBE /* 5-4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "5-4.cpp"; sourceTree = "<group>"; };
+		76C7AE5110E01CC000D65BBE /* 5-6.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "5-6.cpp"; sourceTree = "<group>"; };
+		76C7AE6310E0203900D65BBE /* 5-7.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "5-7.cpp"; sourceTree = "<group>"; };
+		76C7AE6C10E4BFF600D65BBE /* 6-02.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "6-02.cpp"; sourceTree = "<group>"; };
+		76C7AE7010E4C8A100D65BBE /* 6-03.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "6-03.cpp"; sourceTree = "<group>"; };
+		76C7AEB010E7F21000D65BBE /* 6-04.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "6-04.cpp"; sourceTree = "<group>"; };
+		76C7AEC910E7FBFF00D65BBE /* 6-09.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "6-09.cpp"; sourceTree = "<group>"; };
+		76C7AED110E800AC00D65BBE /* 6-10.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "6-10.cpp"; sourceTree = "<group>"; };
+		76C7AEE510E9460400D65BBE /* 6-17.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "6-17.cpp"; sourceTree = "<group>"; };
+		76C7AF1910EA9B6F00D65BBE /* 7-15.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "7-15.cpp"; sourceTree = "<group>"; };
+		76C7AF8A10F14BCB00D65BBE /* 6-21.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "6-21.cpp"; sourceTree = "<group>"; };
+		76C7AFDD10F351CF00D65BBE /* 6-22.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "6-22.cpp"; sourceTree = "<group>"; };
+		76C7AFFC10F62F0B00D65BBE /* 7-01.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "7-01.cpp"; sourceTree = "<group>"; };
+		76C7B00210F74A5900D65BBE /* 7-03.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "7-03.cpp"; sourceTree = "<group>"; };
+		76C7B00910F74CD900D65BBE /* 7-04.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "7-04.h"; sourceTree = "<group>"; };
+		76C7B00A10F74CD900D65BBE /* 7-04.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "7-04.cpp"; sourceTree = "<group>"; };
+		76C7B06B10F7668B00D65BBE /* 7-18.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "7-18.cpp"; sourceTree = "<group>"; };
+		76C7B07B10F919DB00D65BBE /* 7-06.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "7-06.cpp"; sourceTree = "<group>"; };
+		76C7B09110F9276C00D65BBE /* 7-07.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "7-07.cpp"; sourceTree = "<group>"; };
+		76C7B0CE10FA5D0300D65BBE /* 7-08.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "7-08.cpp"; sourceTree = "<group>"; };
+		76C7B11610FA77F000D65BBE /* 7-10.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "7-10.cpp"; sourceTree = "<group>"; };
+		76C7B14D10FE70CC00D65BBE /* 7-09.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "7-09.cpp"; sourceTree = "<group>"; };
+		76C7B2671103B14700D65BBE /* 6-20-arg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "6-20-arg.cpp"; sourceTree = "<group>"; };
+		76C7B2B71109009000D65BBE /* 8-10.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "8-10.cpp"; sourceTree = "<group>"; };
+		76C7B306110C966600D65BBE /* 7-15_noarg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "7-15_noarg.cpp"; sourceTree = "<group>"; };
+		76C7B307110C966600D65BBE /* 8-09.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "8-09.cpp"; sourceTree = "<group>"; };
+		76C7B308110C966600D65BBE /* 9-08.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "9-08.cpp"; sourceTree = "<group>"; };
+		76C7B31B1118CBB300D65BBE /* 10-02.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "10-02.cpp"; sourceTree = "<group>"; };
+		76C9E43B10DCC80D006F1EAF /* 4-11-4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "4-11-4.cpp"; sourceTree = "<group>"; };
+		76C9E45B10DD6420006F1EAF /* 4-11-5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "4-11-5.cpp"; sourceTree = "<group>"; };
+		76DF23F410D98D0C008E2C23 /* 3-8-3-iterators.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "3-8-3-iterators.cpp"; sourceTree = "<group>"; };
+		8DD76F6C0486A84900D96B5E /* straustrup */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = straustrup; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6859E8B029090EE04C91782 /* straustrup.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = straustrup.1; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8DD76F660486A84900D96B5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08FB7794FE84155DC02AAC07 /* straustrup */ = {
+			isa = PBXGroup;
+			children = (
+				08FB7795FE84155DC02AAC07 /* Source */,
+				C6859E8C029090F304C91782 /* Documentation */,
+				1AB674ADFE9D54B511CA2CBB /* Products */,
+			);
+			name = straustrup;
+			sourceTree = "<group>";
+		};
+		08FB7795FE84155DC02AAC07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				76C7B31B1118CBB300D65BBE /* 10-02.cpp */,
+				76C7B306110C966600D65BBE /* 7-15_noarg.cpp */,
+				76C7B307110C966600D65BBE /* 8-09.cpp */,
+				76C7B308110C966600D65BBE /* 9-08.cpp */,
+				76C7B2B71109009000D65BBE /* 8-10.cpp */,
+				76C7B2671103B14700D65BBE /* 6-20-arg.cpp */,
+				76C7B14D10FE70CC00D65BBE /* 7-09.cpp */,
+				76C7B11610FA77F000D65BBE /* 7-10.cpp */,
+				76C7B0CE10FA5D0300D65BBE /* 7-08.cpp */,
+				76C7B09110F9276C00D65BBE /* 7-07.cpp */,
+				76C7B07B10F919DB00D65BBE /* 7-06.cpp */,
+				76C7B06B10F7668B00D65BBE /* 7-18.cpp */,
+				76C7B00910F74CD900D65BBE /* 7-04.h */,
+				76C7B00A10F74CD900D65BBE /* 7-04.cpp */,
+				76C7B00210F74A5900D65BBE /* 7-03.cpp */,
+				76C7AFFC10F62F0B00D65BBE /* 7-01.cpp */,
+				76C7AFDD10F351CF00D65BBE /* 6-22.cpp */,
+				76C7AF8A10F14BCB00D65BBE /* 6-21.cpp */,
+				76C7AF1910EA9B6F00D65BBE /* 7-15.cpp */,
+				76C7AEE510E9460400D65BBE /* 6-17.cpp */,
+				76C7AED110E800AC00D65BBE /* 6-10.cpp */,
+				76C7AEC910E7FBFF00D65BBE /* 6-09.cpp */,
+				76C7AEB010E7F21000D65BBE /* 6-04.cpp */,
+				76C7AE7010E4C8A100D65BBE /* 6-03.cpp */,
+				76C7AE6C10E4BFF600D65BBE /* 6-02.cpp */,
+				76C7AE5110E01CC000D65BBE /* 5-6.cpp */,
+				76C9E45B10DD6420006F1EAF /* 4-11-5.cpp */,
+				76DF23F410D98D0C008E2C23 /* 3-8-3-iterators.cpp */,
+				76C9E43B10DCC80D006F1EAF /* 4-11-4.cpp */,
+				76C7AE3A10E01AAF00D65BBE /* 5-4.cpp */,
+				76C7AE6310E0203900D65BBE /* 5-7.cpp */,
+				769388221135C30200E54FFB /* 10-11.cpp */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		1AB674ADFE9D54B511CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8DD76F6C0486A84900D96B5E /* straustrup */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C6859E8C029090F304C91782 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				C6859E8B029090EE04C91782 /* straustrup.1 */,
+			);
+			name = Documentation;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8DD76F620486A84900D96B5E /* straustrup */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "straustrup" */;
+			buildPhases = (
+				8DD76F640486A84900D96B5E /* Sources */,
+				8DD76F660486A84900D96B5E /* Frameworks */,
+				8DD76F690486A84900D96B5E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = straustrup;
+			productInstallPath = "$(HOME)/bin";
+			productName = straustrup;
+			productReference = 8DD76F6C0486A84900D96B5E /* straustrup */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "straustrup" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 08FB7794FE84155DC02AAC07 /* straustrup */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8DD76F620486A84900D96B5E /* straustrup */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8DD76F640486A84900D96B5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				769388231135C30200E54FFB /* 10-11.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB923208733DC60010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"_GLIBCXX_DEBUG=1",
+					"_GLIBCXX_DEBUG_PEDANTIC=1",
+				);
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = straustrup;
+			};
+			name = Debug;
+		};
+		1DEB923308733DC60010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = straustrup;
+			};
+			name = Release;
+		};
+		1DEB923608733DC60010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.5;
+			};
+			name = Debug;
+		};
+		1DEB923708733DC60010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.5;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "straustrup" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB923208733DC60010E9CD /* Debug */,
+				1DEB923308733DC60010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "straustrup" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB923608733DC60010E9CD /* Debug */,
+				1DEB923708733DC60010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

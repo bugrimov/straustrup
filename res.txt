@@ -1,0 +1,29 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+DEBUG: Macro defined: START: 1
+DEBUG: Macro defined: CLOSE_FILE: thefile.close()
+DEBUG: Macro defined: PRINT: cout << a << b << endl
+
+using namespace  std;
+
+int main(int argc, char* argv[])
+{
+	for (int i= i<argc; i++)
+	{
+		string line;
+		ifstream thefile(argv[i]);
+		if (thefile.is_open())
+		{
+			while (! thefile.eof() )
+			{
+				getline (thefile, line);
+				cout << line << "asd" << endl;
+			}
+			
+		}
+		else cout << "Unable to open youre fucking file: " << argv[i];
+		
+	}
+}
+
