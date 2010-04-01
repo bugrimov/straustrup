@@ -1,48 +1,76 @@
 /*
- Определите и реализуйте и оттестируйте класс Intset для множества целых
- чисел. Реализуйте операции объединения, пересечения и симметричной разности.
+ Переделать в класс Node
 */
 
 #include <iostream>
 
+struct Node
+{
+  int m;
+  int n;
+
+  Node(int mm, int nn)
+  {
+    m=mm;
+    n=nn;
+  }
+  Node()
+  {
+    m=0;
+    n=0;
+  }
+  
+  void print()
+  {
+    std::cout << m << ":" << n << std::endl;
+  }
+
+  bool operator<(const Node&) const;
+  bool operator==(const Node&) const;
+
+};
+
+bool Node::operator<(const Node& node) const
+{
+  return (m<node.m && (m==node.m && n<node.n));
+}
+
+
+bool Node::operator==(const Node& node) const
+{
+  return (m==node.m && n==node.n);
+}
+
+
 class Data
 {
-  int num;
+  Node node;
   Data* next;
-  bool has_next;
 public:
-  Data(int n) {num = n; next = 0; has_next=false;}
+  Data(Node n) {node = n; next = 0;}
   Data* getNext() { return next; }
-  bool hasNext() { return has_next; }
   void setNext(Data* d)
   { 
     if (d != this)
       next = d; 
     else
       std::cout <<"ERROR!!!!";
-    has_next = true;
   }
-  int getData() { return num; }
-  void print() { std::cout << num << std::endl; }
+  Node getData() { return node; }
+  void print() { node.print(); }
 
 };
 
 class Intset
 {
   Data* top;
-  //Data* curr;
-  //void add_before(Data* what, Data* before);
 public:
   Intset() { top = 0;}
   Intset(const Intset&);
-  Intset& add(int num);
+  Intset& add(Node);
   const Intset operator+(const Intset&) const;
 
-  bool has(int) const;
-
-  //int pop();
-  //void newPop();
-  //bool canPop();
+  bool has(Node) const;
 
   void print() const;
 
@@ -68,19 +96,19 @@ Intset::Intset(const Intset& b)
 }
 
 
-Intset& Intset::add(int num)
+Intset& Intset::add(Node node)
 {
-  if (has(num) )
+  if (has(node) )
     return *this;
 
-  Data* what=new Data(num);
+  Data* what=new Data(node);
   if (top)
   {
     Data* el = top;
     Data* prev = 0;
     while (el)
     {
-      if (num < el->getData())
+      if (node < el->getData())
         if (prev == 0)
         {
           what->setNext(el);
@@ -125,20 +153,17 @@ void Intset::print() const
   }
 }
 
-bool Intset::has(int i) const
+bool Intset::has(Node i) const
 {
   Data* el = top;
   while (el)
   {
-    //std::cout << " [" << el << " " << el->getData() << " " << el->getNext() << "]";
     if (el->getData() == i)
     {
-      //std::cout << "[has]";
       return true;
     }
     el = el->getNext();
   }
-  //std::cout << "[not has]";
   return false;
 }
 
@@ -148,7 +173,6 @@ const Intset Intset::operator+(const Intset& b) const
   Data* el = b.top;
   while (el)
   {
-    //std::cout << "+" << el->getData();
     if (! c.has(el->getData()))
       c.add(el->getData());
     el = el->getNext();
@@ -205,15 +229,13 @@ Intset intersection(Intset a, Intset b)
 int main()
 {
   Intset a;
-  a.add(4).add(2).add(15).add(10);
+  a.add(Node(4,1)).add(Node(2,4)).add(Node(15,5)).add(Node(10,3));
 
   Intset b;
-  b.add(3).add(9).add(15).add(4).add(3);
+  b.add(Node(3,2)).add(Node(9,5)).add(Node(15,5)).add(Node(4,3)).add(Node(5,5));
 
   a.print();
   b.print();
-
-  //std::cout << a.has(1) << a.has(10);
 
 
   std::cout << "Adding:\n";
